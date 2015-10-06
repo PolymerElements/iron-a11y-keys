@@ -24,13 +24,13 @@ Use the `keys` attribute to express what combination of keys will trigger the ev
 Use the `target` attribute to set up event handlers on a specific node.
 The `keys-pressed` event will fire when one of the key combinations set with the `keys` attribute is pressed.
 
-Example:
+#### Example
 
 This element will call `arrowHandler` on all arrow keys:
 
     <iron-a11y-keys target="{{}}" keys="up down left right" on-keys-pressed="{{arrowHandler}}"></iron-a11y-keys>
 
-Keys Syntax:
+### Keys Syntax
 
 The `keys` attribute can accepts a space seprated, `+` concatenated set of modifier keys and some common keyboard keys.
 
@@ -42,13 +42,13 @@ The modifier keys are `Shift`, `Control`, and `Alt`.
 All keys are expected to be lowercase and shortened:
 `Left Arrow` is `left`, `Page Down` is `pagedown`, `Control` is `ctrl`, `F1` is `f1`, `Escape` is `esc` etc.
 
-Keys Syntax Example:
+#### Keys Syntax Example
 
 Given the `keys` attribute value "ctrl+shift+f7 up pagedown esc space alt+m", the `<iron-a11y-keys>` element will send
 the `keys-pressed` event if any of the follow key combos are pressed: Control and Shift and F7 keys, Up Arrow key, Page
 Down key, Escape key, Space key, Alt and M key.
 
-Slider Example:
+#### Slider Example
 
 The following is an example of the set of keys that fulfil the WAI-ARIA "slider" role [best
 practices](http://www.w3.org/TR/wai-aria-practices/#slider):
@@ -63,7 +63,7 @@ The `decrement` function will move the slider a set amount toward the minimum va
 The `setMin` function will move the slider to the minimum value.
 The `setMax` function will move the slider to the maximum value.
 
-Keys Syntax Grammar:
+### Keys Syntax Grammar
 
 [EBNF](http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) Grammar of the `keys` attribute.
 
