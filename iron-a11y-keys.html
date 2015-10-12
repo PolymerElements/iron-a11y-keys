@@ -11,23 +11,59 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
 
-
 <script>
 
 /*
 
-`iron-a11y-keys` provides a cross-browser compatible interface for processing 
+`iron-a11y-keys` provides a cross-browser interface for processing 
 keyboard commands. The interface adheres to to [WAI-ARIA best 
 practices](http://www.w3.org/TR/wai-aria-practices/#kbd_general_binding). 
 It uses an expressive syntax to filter key presses.
 
-`iron-a11y-keys` has two main attributes: `keys` and `target`.
+```html
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/iron-a11y-keys/iron-a11y-keys.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+
+<dom-module id="my-el">
+  <template>
+    <style></style>
+    <iron-a11y-keys id="a11y" target="[[target]]" keys="enter"
+                    on-keys-pressed="onEnter"></iron-a11y-keys>
+    <paper-input id="input"
+                 placeholder="Type something and press Enter to log to console"
+                 value="{{userInput::input}}"></paper-input>
+  </template>
+  <script>
+    Polymer({
+      is: 'my-el',
+      properties: {
+        userInput: {
+          type: String,
+          notify: true,
+        },
+        target: {
+          type: Object,
+          value: function() {
+            return this.$.input;
+          }
+        },
+      },
+      onEnter: function() {
+        console.log(this.userInput);
+      },
+    });
+  </script>
+</dom-module>
+
+```
 
 ### The `keys` attribute
 
 The `keys` attribute expresses what combination of keys triggers the event.
 
-### Keys Syntax
+#### Syntax
 
 The `keys` attribute accepts a space separated, plus-sign (`+`) concatenated 
 set of modifier keys and some common keyboard keys.
@@ -43,7 +79,7 @@ All keys are expected to be lowercase and shortened:
 `Left Arrow` is `left`, `Page Down` is `pagedown`, `Control` is `ctrl`, 
 `F1` is `f1`, `Escape` is `esc` etc.
 
-#### Keys Syntax Example
+##### Example
 
 Given the following `keys` attribute value: 
 
@@ -64,7 +100,7 @@ Space key
 
 Alt and M key
 
-### Keys Syntax Grammar
+#### Grammar
 
 [EBNF](http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) Grammar of the `keys` attribute.
 
@@ -94,7 +130,7 @@ This element will call `arrowHandler` on all arrow keys:
     <iron-a11y-keys target="[[target]]" keys="up down left right" 
                     on-keys-pressed="arrowHandler"></iron-a11y-keys>
 
-#### Slider Example
+### WAI-ARIA Slider Example
 
 The following is an example of the set of keys that fulfill
 WAI-ARIA's "slider" role [best
