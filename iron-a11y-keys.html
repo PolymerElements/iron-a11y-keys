@@ -28,7 +28,7 @@ Example:
 
 This element will call `arrowHandler` on all arrow keys:
 
-    <iron-a11y-keys target="{{}}" keys="up down left right" on-keys-pressed="{{arrowHandler}}"></iron-a11y-keys>
+    <iron-a11y-keys target="{{}}" keys="up down left right" on-keys-pressed="arrowHandler"></iron-a11y-keys>
 
 Keys Syntax:
 
@@ -53,10 +53,10 @@ Slider Example:
 The following is an example of the set of keys that fulfil the WAI-ARIA "slider" role [best
 practices](http://www.w3.org/TR/wai-aria-practices/#slider):
 
-    <iron-a11y-keys target="{{}}" keys="left pagedown down" on-keys-pressed="{{decrement}}"></iron-a11y-keys>
-    <iron-a11y-keys target="{{}}" keys="right pageup up" on-keys-pressed="{{increment}}"></iron-a11y-keys>
-    <iron-a11y-keys target="{{}}" keys="home" on-keys-pressed="{{setMin}}"></iron-a11y-keys>
-    <iron-a11y-keys target="{{}}" keys="end" on-keys-pressed="{{setMax}}"></iron-a11y-keys>
+    <iron-a11y-keys target="{{}}" keys="left pagedown down" on-keys-pressed="decrement"></iron-a11y-keys>
+    <iron-a11y-keys target="{{}}" keys="right pageup up" on-keys-pressed="increment"></iron-a11y-keys>
+    <iron-a11y-keys target="{{}}" keys="home" on-keys-pressed="setMin"></iron-a11y-keys>
+    <iron-a11y-keys target="{{}}" keys="end" on-keys-pressed="setMax"></iron-a11y-keys>
 
 The `increment` function will move the slider a set amount toward the maximum value.
 The `decrement` function will move the slider a set amount toward the minimum value.
