@@ -29,5 +29,6 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
     "web-component-tester": "*",
     "iron-test-helpers": "polymerelements/iron-test-helpers#^1.0.0"
-  }
+  },
+  "ignore": []
 }
