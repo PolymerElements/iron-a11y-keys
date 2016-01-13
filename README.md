@@ -7,6 +7,9 @@ iron-a11y-keys.html
 Edit those files, and our readme bot will duplicate them over here!
 Edit this file, and the bot will squash your changes :)
 
+The bot does some handling of markdown. Please file a bug if it does the wrong
+thing! https://github.com/PolymerLabs/tedium/issues
+
 -->
 
 [![Build Status](https://travis-ci.org/PolymerElements/iron-a11y-keys.svg?branch=master)](https://travis-ci.org/PolymerElements/iron-a11y-keys)
@@ -15,7 +18,6 @@ _[Demo and API Docs](https://elements.polymer-project.org/elements/iron-a11y-key
 
 
 ##&lt;iron-a11y-keys&gt;
-
 
 `iron-a11y-keys` provides a cross-browser interface for processing 
 keyboard commands. The interface adheres to [WAI-ARIA best 
@@ -28,11 +30,13 @@ The sample code below is a portion of a custom element. The goal is to call
 the `onEnter` method whenever the `paper-input` element is in focus and 
 the `Enter` key is pressed.
 
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="enter"
-                        on-keys-pressed="onEnter"></iron-a11y-keys>
-    <paper-input id="input"
-                 placeholder="Type something. Press enter. Check console."
-                 value="{{userInput::input}}"></paper-input>
+```html
+<iron-a11y-keys id="a11y" target="[[target]]" keys="enter"
+                    on-keys-pressed="onEnter"></iron-a11y-keys>
+<paper-input id="input"
+             placeholder="Type something. Press enter. Check console."
+             value="{{userInput::input}}"></paper-input>
+```
 
 The custom element declares an `iron-a11y-keys` element that is bound to a 
 property called `target`. The `target` property
@@ -44,23 +48,25 @@ user's input on each keystroke.
 The last step is to link the two elements within the custom element's 
 registration.
 
-    ...
-    properties: {
-      userInput: {
-        type: String,
-        notify: true,
-      },
-      target: {
-        type: Object,
-        value: function() {
-          return this.$.input;
-        }
-      },
-    },
-    onEnter: function() {
-      console.log(this.userInput);
+```javascript
+...
+properties: {
+  userInput: {
+    type: String,
+    notify: true,
+  },
+  target: {
+    type: Object,
+    value: function() {
+      return this.$.input;
     }
-    ...
+  },
+},
+onEnter: function() {
+  console.log(this.userInput);
+}
+...
+```
 
 ## The `keys` attribute
 
@@ -84,14 +90,16 @@ All keys are expected to be lowercase and shortened. E.g.
 Below is the [EBNF](http://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_Form) 
 Grammar of the `keys` attribute.
 
-    modifier = "shift" | "ctrl" | "alt";
-    ascii = ? /[a-z0-9]/ ? ;
-    fnkey = ? f1 through f12 ? ;
-    arrow = "up" | "down" | "left" | "right" ;
-    key = "tab" | "esc" | "space" | "*" | "pageup" | "pagedown" | 
-          "home" | "end" | arrow | ascii | fnkey;
-    keycombo = { modifier, "+" }, key ;
-    keys = keycombo, { " ", keycombo } ;
+```javascript
+modifier = "shift" | "ctrl" | "alt";
+ascii = ? /[a-z0-9]/ ? ;
+fnkey = ? f1 through f12 ? ;
+arrow = "up" | "down" | "left" | "right" ;
+key = "tab" | "esc" | "space" | "*" | "pageup" | "pagedown" | 
+      "home" | "end" | arrow | ascii | fnkey;
+keycombo = { modifier, "+" }, key ;
+keys = keycombo, { " ", keycombo } ;
+```
 
 ### Example
 
@@ -109,14 +117,16 @@ The following is an example of the set of keys that fulfills WAI-ARIA's
 "slider" role [best
 practices](http://www.w3.org/TR/wai-aria-practices/#slider):
 
-    <iron-a11y-keys target="[[target]]" keys="left pagedown down" 
-                    on-keys-pressed="decrement"></iron-a11y-keys>
-    <iron-a11y-keys target=""[[target]] keys="right pageup up" 
-                    on-keys-pressed="increment"></iron-a11y-keys>
-    <iron-a11y-keys target="[[target]]" keys="home" 
-                    on-keys-pressed="setMin"></iron-a11y-keys>
-    <iron-a11y-keys target=""[[target]] keys="end" 
-                    on-keys-pressed="setMax"></iron-a11y-keys>
+```html
+<iron-a11y-keys target="[[target]]" keys="left pagedown down" 
+                on-keys-pressed="decrement"></iron-a11y-keys>
+<iron-a11y-keys target=""[[target]] keys="right pageup up" 
+                on-keys-pressed="increment"></iron-a11y-keys>
+<iron-a11y-keys target="[[target]]" keys="home" 
+                on-keys-pressed="setMin"></iron-a11y-keys>
+<iron-a11y-keys target=""[[target]] keys="end" 
+                on-keys-pressed="setMax"></iron-a11y-keys>
+```
 
 The `target` properties must evaluate to a node. See the basic usage 
 example above.
