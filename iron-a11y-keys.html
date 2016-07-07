@@ -165,6 +165,7 @@ value. `setMax` should move the slider to the maximum value.
       this.addOwnKeyBinding(this.keys, '_fireKeysPressed');
     },
 
+    /** @export */
     _fireKeysPressed: function(event) {
       this.fire('keys-pressed', event.detail, {});
     }
