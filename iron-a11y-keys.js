@@ -1,17 +1,6 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.html">
-
-<script>
+import '../polymer/polymer.js';
+import { IronA11yKeysBehavior } from '../iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
+import { Polymer } from '../polymer/lib/legacy/polymer-fn.js';
 
 /**
 `iron-a11y-keys` provides a cross-browser interface for processing
@@ -130,50 +119,49 @@ value. `setMax` should move the slider to the maximum value.
 
 
 
-  Polymer({
-    is: 'iron-a11y-keys',
+Polymer({
+  is: 'iron-a11y-keys',
 
-    behaviors: [
-      Polymer.IronA11yKeysBehavior
-    ],
+  behaviors: [
+    IronA11yKeysBehavior
+  ],
 
-    properties: {
-      /** @type {?Node} */
-      target: {
-        type: Object,
-        observer: '_targetChanged'
-      },
-
-      /**
-       * Space delimited list of keys where each key follows the format:
-       * `[MODIFIER+]*KEY[:EVENT]`.
-       * e.g. `keys="space ctrl+shift+tab enter:keyup"`.
-       * More detail can be found in the "Grammar" section of the documentation
-       */
-      keys: {
-        type: String,
-        reflectToAttribute: true,
-        observer: '_keysChanged'
-      }
+  properties: {
+    /** @type {?Node} */
+    target: {
+      type: Object,
+      observer: '_targetChanged'
     },
 
-    attached: function() {
-      if (!this.target) {
-        this.target = this.parentNode;
-      }
-    },
-
-    _targetChanged: function(target) {
-      this.keyEventTarget = target;
-    },
-
-    _keysChanged: function() {
-      this.removeOwnKeyBindings();
-      this.addOwnKeyBinding(this.keys, '_fireKeysPressed');
-    },
-
-    _fireKeysPressed: function(event) {
-      this.fire('keys-pressed', event.detail, {});
+    /**
+     * Space delimited list of keys where each key follows the format:
+     * `[MODIFIER+]*KEY[:EVENT]`.
+     * e.g. `keys="space ctrl+shift+tab enter:keyup"`.
+     * More detail can be found in the "Grammar" section of the documentation
+     */
+    keys: {
+      type: String,
+      reflectToAttribute: true,
+      observer: '_keysChanged'
     }
-  });
-</script>
+  },
+
+  attached: function() {
+    if (!this.target) {
+      this.target = this.parentNode;
+    }
+  },
+
+  _targetChanged: function(target) {
+    this.keyEventTarget = target;
+  },
+
+  _keysChanged: function() {
+    this.removeOwnKeyBindings();
+    this.addOwnKeyBinding(this.keys, '_fireKeysPressed');
+  },
+
+  _fireKeysPressed: function(event) {
+    this.fire('keys-pressed', event.detail, {});
+  }
+});
