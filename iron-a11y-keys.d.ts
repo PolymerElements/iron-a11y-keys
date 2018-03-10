@@ -9,6 +9,7 @@
  */
 
 /// <reference path="../polymer/types/polymer.d.ts" />
+/// <reference path="../iron-a11y-keys-behavior/iron-a11y-keys-behavior.d.ts" />
 
 interface IronA11yKeysElement extends Polymer.Element, Polymer.IronA11yKeysBehavior {
   target: Node|null;
