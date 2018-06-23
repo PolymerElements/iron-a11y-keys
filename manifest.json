@@ -1,0 +1,28 @@
+{
+  "files": {
+    "iron-a11y-keys.html": {
+      "convertedUrl": "iron-a11y-keys.js",
+      "exports": {}
+    },
+    "index.html": {
+      "convertedUrl": "index.html",
+      "exports": {}
+    },
+    "demo/index.html": {
+      "convertedUrl": "demo/index.html",
+      "exports": {}
+    },
+    "demo/x-key-aware.html": {
+      "convertedUrl": "demo/x-key-aware.js",
+      "exports": {}
+    },
+    "test/basic-test.html": {
+      "convertedUrl": "test/basic-test.html",
+      "exports": {}
+    },
+    "test/index.html": {
+      "convertedUrl": "test/index.html",
+      "exports": {}
+    }
+  }
+}
