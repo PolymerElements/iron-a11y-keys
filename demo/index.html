@@ -13,14 +13,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <head>
   <meta charset="UTF-8">
   <title>Iron A11y Keys demo</title>
-  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-
-  <script type="module" src="../../iron-demo-helpers/demo-snippet.js"></script>
-  <script type="module" src="../../iron-demo-helpers/demo-pages-shared-styles.js"></script>
-
-  <script type="module" src="./x-key-aware.js"></script>
+  <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2.0.0/webcomponents-loader.js"></script>
 
   <script type="module">
+    import '@polymer/iron-demo-helpers/demo-snippet.js';
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+    import './x-key-aware.js';
+
     import {html} from '@polymer/polymer/lib/utils/html-tag.js';
     const template = html`
       <custom-style>
@@ -36,5 +35,5 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <x-key-aware tabindex="0"></x-key-aware>
     </template>
   </demo-snippet>
-</body>g
+</body>
 </html>
