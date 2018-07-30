@@ -28,14 +28,15 @@ npm install --save @polymer/iron-a11y-keys
   </head>
   <body>
     <iron-a11y-keys id="keys" keys="left right down up"></iron-a11y-keys>
+
+    <script>
+      // Where to listen for the keys.
+      keys.target = document.body;
+      keys.addEventListener('keys-pressed', function(event) {
+        console.log(event.detail);
+      });
+    </script>
   </body>
-  <script>
-    // Where to listen for the keys.
-    keys.target = document.body;
-    keys.addEventListener('keys-pressed', function(event) {
-      console.log(event.detail);
-    });
-  </script>
 </html>
 ```
 ### In a Polymer 3 element
