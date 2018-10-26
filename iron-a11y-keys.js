@@ -133,6 +133,7 @@ value. `setMax` should move the slider to the maximum value.
 
 Polymer({
   is: 'iron-a11y-keys',
+  _template: null,
 
   behaviors: [IronA11yKeysBehavior],
 
